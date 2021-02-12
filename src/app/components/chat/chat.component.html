@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+     <ion-button (click)="regresar()">
+       <ion-icon slot="icon-only" name="arrow-round-back"></ion-icon>
+     </ion-button>
+    </ion-buttons>
+    <ion-title>{{ chat.usuario}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row *ngFor="let mensaje of mensajes">
+      <ion-col class="mensaje otro-mensaje" size="9" *ngIf="usuarioActual !== mensaje.usuario">
+        <b>{{ mensaje.usuario}}</b><br>
+        <span>{{ mensaje.texto}}</span>
+        <div class="time" text-right>5:57 AM</div>
+      </ion-col>    
+      <ion-col class="mensaje mi-mensaje" offset="3" size="9" *ngIf="usuarioActual === mensaje.usuario">
+        <b>{{ mensaje.usuario}}</b><br>
+        <span>{{ mensaje.texto}}</span>
+        <div class="time" text-right>{{ mensaje.hora}}</div>
+      </ion-col>    
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar color="light">
+     <ion-row align-items-center no-padding>
+       <ion-col size="10">
+         <textarea [(ngModel)]="nuevoMensaje" class="mensaje-input" autosize rows="4" maxRows="4" ></textarea>
+       </ion-col>
+       <ion-col size="2">
+        <ion-button class="msg-btn" expand="block" fill="clear" color="primary" [disabled]="nuevoMensaje === ''" (click)="enviarMensaje()">
+          <ion-icon slot="icon-only" name="ios-send"></ion-icon>
+        </ion-button>
+       </ion-col>
+     </ion-row>
+    </ion-toolbar>
+  </ion-footer>
+  

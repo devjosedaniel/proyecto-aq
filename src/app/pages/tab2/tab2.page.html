@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button slot="icon-only" defaultHref="/principal"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Lista de Quejas
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentActionSheet()">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <div padding *ngIf="quejas.length===0" style="text-align: center;">
+        <ion-label text-center>No se encontro información</ion-label>
+    </div>
+    <div *ngIf="quejas">
+        <ion-card style="background-color: white;" *ngFor="let queja of quejas">
+            <img *ngIf="queja.foto" style="height: 250px;" src="https://aquagardens.com.ec/administrador/img/trabajos/{{ queja.foto}}">
+            <ion-card-header>
+                <ion-card-subtitle>{{ queja.encargado}}</ion-card-subtitle>
+                <ion-card-title color="primary">
+                    {{ queja.cliente}}
+                </ion-card-title>
+                <ion-label>{{queja.fecha}}</ion-label>
+            </ion-card-header>
+            <ion-card-content>
+                <p>{{ queja.queja}}</p>
+
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar color="primary" mode="ios">
+
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Cliente</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="ion-padding" *ngIf="trabajos.length===0" style="text-align: center;">
+        <ion-label class="ion-text-center">No tiene trabajos</ion-label>
+    </div>
+
+    <app-trabajos [trabajos]="trabajos"></app-trabajos>
+</ion-content>

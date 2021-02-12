@@ -1,0 +1,32 @@
+.mainSlide,
+.mainSlide ion-slide {
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/bg_aqua3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+ion-header {
+    background-image: url('/assets/bg_aqua3.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    width: 50%;
+}
+
+.pick-avatar {
+    width: 80px;
+    opacity: 0.3;
+}
+
+.pick-avatar-seleccionado {
+    transition: opacity 0.5s linear;
+    opacity: 1 !important;
+}
+
+ion-card {
+    background-color: white;
+}

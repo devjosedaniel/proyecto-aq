@@ -1,0 +1,57 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>sugerencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+</ion-content> -->
+
+
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            Enviar Sugerencias
+        </ion-title>
+
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" padding>
+
+    <ion-card mode="ios" style="background-color: white;">
+        <ion-card-header>
+            <!--  <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle> -->
+            <ion-card-title color="primary">Escriba su sugerencia</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+
+                <ion-item>
+                    <ion-label position="floating">Mensaje</ion-label>
+                    <ion-textarea [(ngModel)]="sugerencia.mensaje"></ion-textarea>
+                </ion-item>
+
+            </ion-list>
+
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button [disabled]="sugerencia.mensaje.length < 1" (click)="enviar()" shape="round">
+                        <ion-icon slot="start" name="mail"></ion-icon>
+                        Enviar
+                    </ion-button>
+                </ion-col>
+
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+</ion-content>

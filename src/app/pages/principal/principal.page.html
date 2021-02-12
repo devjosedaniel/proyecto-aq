@@ -1,0 +1,150 @@
+<ion-menu side="start" menuId="menu1" contentId="principal">
+    <ion-header no-border>
+        <ion-toolbar *ngIf="!usuario">
+            <ion-title>Aquagardens</ion-title>
+        </ion-toolbar>
+        <ion-item lines="none" *ngIf="usuario">
+            <ion-avatar slot="start">
+                <img src="assets/icon.png" />
+            </ion-avatar>
+            <ion-label>{{ usuario.nombrereal}}</ion-label>
+        </ion-item>
+    </ion-header>
+    <ion-content>
+        <ion-list lines="none">
+            <ion-menu-toggle>
+                <ion-item detail [routerLink]="redirecTo">
+                    <ion-icon slot="start" name="home"></ion-icon>
+                    <ion-label>Inicio</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario && (usuario.idrol==='1' || usuario.idrol==='3')">
+                <ion-item detail [routerLink]="redirectChat">
+                    <ion-icon slot="start" name="mail"></ion-icon>
+                    <ion-label>Chat</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario && usuario.idrol==='2'">
+                <ion-item detail [routerLink]="['/qr']">
+                    <ion-icon slot="start" name="qr-scanner"></ion-icon>
+                    <ion-label>Codigo Qr</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario && usuario.idrol==='2'">
+                <ion-item detail [routerLink]="['/perfil']">
+                    <ion-icon slot="start" name="person"></ion-icon>
+                    <ion-label>Mi perfil</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario && usuario.idrol==='2'">
+                <ion-item detail [routerLink]="['/ordenes']">
+                    <ion-icon slot="start" name="document"></ion-icon>
+                    <ion-label>Órdenes de Pago</ion-label>
+                    <ion-badge mode="ios" slot="end" color="success">2</ion-badge>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle>
+                <ion-item routerLink="/servicios" detail>
+                    <ion-icon slot="start" name="build"></ion-icon>
+                    <ion-label>Servicios</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario">
+                <ion-item routerLink="/notificaciones" detail>
+                    <ion-icon slot="start" name="notifications"></ion-icon>
+                    <ion-label>Notificaciones</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle>
+                <ion-item detail routerLink="/sugerencia">
+                    <ion-icon slot="start" name="text"></ion-icon>
+                    <ion-label>Sugerencias</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle>
+                <ion-item detail routerLink="/contacto">
+                    <ion-icon slot="start" name="call"></ion-icon>
+                    <ion-label>Contacto</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+            <ion-menu-toggle *ngIf="usuario">
+                <ion-item detail (click)="salir()">
+                    <ion-icon slot="start" name="exit"></ion-icon>
+                    <ion-label>Salir</ion-label>
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+    </ion-content>
+    <ion-item (click)="creador()" detail>
+        <!-- <ion-icon color="primary" slot="start"></ion-icon> -->
+        <ion-label style="display: flex;justify-items: center;" class="ion-justify-content-center " color=""><img width="20px" src="assets/logo-devdesign.png" alt="">&nbsp; DEV<b>DESIGN</b></ion-label>
+    </ion-item>
+</ion-menu>
+
+<!-- <app-menu [idrol]="usuario.idrol" [nombre]="usuario.nombrereal"></app-menu>  -->
+<ion-router-outlet color="light" id="principal">
+    <ion-header no-border>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-button (click)="mostrarmenu()">
+                    <ion-icon color="primary" slot="icon-only" name="menu"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <!-- <ion-title >Aquagardens</ion-title> -->
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+
+        <div style="text-align: center;"> <img class="icono " src="assets/logoappletras.png"></div>
+
+
+
+
+
+        <!-- <div class="ion-text-center">
+      <ion-label >Servicio de </ion-label>
+    </div>
+    <div class="ion-text-center">
+      <ion-label ><ion-icon slot="icon-only" name="alarm"></ion-icon> Lunes  a Sabado</ion-label>
+    </div> -->
+
+        <ion-slides mode="ios" pager="ios" scrollbar="ios">
+            <ion-slide>
+                <ion-card style="background-color: white!important;" class="cardserv">
+                    <div class="image-slide" [style]="'assets/img_piscina.jpg' | domSanitizer"></div>
+                    <ion-card-header>
+                        <ion-card-subtitle>Instalación, reparación, limpieza</ion-card-subtitle>
+                        <ion-card-title color="primary">Mantenimiento de Piscinas</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-slide>
+            <ion-slide>
+                <ion-card class="cardserv">
+                    <div class="image-slide" [style]="'assets/img_jacuzzi.jpg' | domSanitizer"></div>
+
+                    <ion-card-header>
+                        <ion-card-subtitle>Instalación, reparación, limpieza</ion-card-subtitle>
+                        <ion-card-title color="primary">Mantenimiento de Jacuzzi</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-slide>
+            <ion-slide>
+                <ion-card class="cardserv">
+                    <div class="image-slide" [style]="'assets/img_cesped.jpg' | domSanitizer"></div>
+                    <ion-card-header>
+                        <ion-card-subtitle>Diseños, corte, decoración</ion-card-subtitle>
+                        <ion-card-title color="primary">Mantenimiento de Jardines</ion-card-title>
+                    </ion-card-header>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+        <div style="width: 100%;text-align:-webkit-center" class="ion-margin-top ion-align-items-center ion-justify-content-center">
+            <ion-item class="ion-align-items-center ion-justify-content-center" no-border style="width: 80%!important;" color="warning">
+                <ion-icon color="dark" slot="start" name="alarm"></ion-icon>
+                <ion-label style="font-weight: bold;" class="font-weight-bold" color="dark">Servicio de Lunes a Sabado</ion-label>
+
+            </ion-item>
+        </div>
+    </ion-content>
+</ion-router-outlet>

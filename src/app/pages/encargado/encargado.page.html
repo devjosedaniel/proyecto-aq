@@ -1,0 +1,29 @@
+<ion-header no-border>
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>Trabajos del Día</ion-title>
+        <ion-buttons slot="end">
+
+
+            <ion-button (click)="miubicacion()" [color]='colorgps'>
+                <ion-icon slot="icon-only" name="pin"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="ion-padding" *ngIf="trabajos.length===0" style="text-align: center;">
+        <ion-label class="ion-text-center">No tiene mas trabajos</ion-label>
+    </div>
+
+    <app-trabajos [trabajos]="trabajos"></app-trabajos>
+</ion-content>

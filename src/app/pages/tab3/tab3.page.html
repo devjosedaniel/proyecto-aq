@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+
+        <ion-buttons slot="start">
+            <ion-back-button slot="icon-only" defaultHref="/principal"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title>
+            Lista de Sugerencias
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="presentActionSheet()">
+                <ion-icon slot="icon-only" name="more"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="ion-padding" *ngIf="sugerencias.length===0" style="text-align: center;">
+        <ion-label class="ion-text-center">No se encontro información</ion-label>
+    </div>
+
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col *ngFor="let sugerencia of sugerencias" size="12">
+                <div class="sugerencia">
+                    <ion-item lines="none">
+                        <ion-icon color="primary" slot="start" name="mail"></ion-icon>
+                        <ion-label>
+                            <h4>
+                                <ion-text color="primary">{{ sugerencia.fecha}}</ion-text>
+                            </h4>
+                            <h3>
+                                <ion-text class="ion-text-wrap">{{ sugerencia.texto}}</ion-text>
+                            </h3>
+                            <!-- <div>
+                                <ion-text color="primary" slot="end">{{ sugerencia.fecha}}</ion-text>
+                            </div>
+                            <div>
+                                <ion-text class="ion-padding">{{ sugerencia.texto}}</ion-text>
+                            </div> -->
+                        </ion-label>
+
+                        <!-- <ion-note color="primary" slot="end">{{ sugerencia.fecha}}</ion-note> -->
+                    </ion-item>
+                </div>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-content>

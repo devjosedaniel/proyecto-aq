@@ -1,0 +1,69 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Contáctanos</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <ion-slides [options]="{allowSlidePrev:false,allowSlideNext:false}" class="slides" mode="ios">
+        <ion-slide>
+            <ion-card mode="ios" class="card">
+                <div class="contimg">
+                    <ion-img src="assets/logoapp.png"></ion-img>
+                    <!-- <img style="width:180px" src="assets/logoapp.png"> -->
+                </div>
+                <ion-card-header>
+                    <ion-card-subtitle>Fernando Sarango</ion-card-subtitle>
+                    <ion-card-title color="primary" class="font-weight-bold ion-text-capitalize">
+                        <h3>Aquagardens</h3>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid fixed>
+                        <ion-row>
+                            <ion-col size="4">
+                                <ion-button (click)="irFacebook()" size="small" color="light" shape="round">
+                                    <ion-icon slot="icon-only" color="primary" name="logo-facebook"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="4">
+                                <ion-button size="small" (click)="irWhatsapp()" color="light" shape="round">
+                                    <ion-icon slot="icon-only" fill="clear" color="success" name="logo-whatsapp"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+                            <ion-col size="4">
+                                <ion-button size="small" (click)="irInstagram()" color="light" shape="round">
+                                    <ion-icon slot="icon-only" fill="clear" color="tertiary" name="logo-instagram"></ion-icon>
+                                </ion-button>
+                            </ion-col>
+
+
+                        </ion-row>
+                    </ion-grid>
+                    <ion-item>
+                        <ion-icon color="medium" slot="start" name="mail"></ion-icon>
+                        <ion-label>
+                            <h2>fjsarango.eco@gmail.com</h2>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon color="medium" slot="start" name="mail"></ion-icon>
+                        <ion-label>
+                            <h2>fjsarango@aquagardens.com.ec</h2>
+                        </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon color="medium" slot="start" name="globe"></ion-icon>
+                        <ion-label>
+                            <h2>www.aquagardens.com.ec</h2>
+                        </ion-label>
+                    </ion-item>
+
+                </ion-card-content>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

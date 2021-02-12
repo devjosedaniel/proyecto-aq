@@ -1,0 +1,36 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="home"></ion-icon>
+    </ion-buttons> -->
+
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/principal"></ion-back-button>
+        </ion-buttons>
+
+        <ion-title size="large" class="text-center">
+            Trabajos Díarios
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-segment scrollable mode="md">
+    <ion-segment-button *ngIf="trabajos" (ionSelect)="select($event)" value="todos" checked color="primary" mode="md">
+        <ion-label>Todos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button (ionSelect)="select($event)" [value]="encargado" *ngFor="let encargado of encargados" color="primary" mode="md">
+        <ion-label>{{encargado}}</ion-label>
+    </ion-segment-button>
+
+</ion-segment>
+
+
+<ion-content color="light">
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <!-- Trabajos -->
+    <app-trabajos [trabajos]="trabajos"></app-trabajos>
+</ion-content>

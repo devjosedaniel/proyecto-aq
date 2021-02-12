@@ -1,0 +1,101 @@
+<ion-header>
+
+    <ion-toolbar mode="ios" color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Perfil</ion-title>
+
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon slot="icon-only" name="person"></ion-icon>
+
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+    <ion-card *ngIf="usuario" style="background-color: white;" color="white">
+        <ion-card-header>
+
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-card-title style="font-weight: bold;">
+                Información del Cliente
+            </ion-card-title>
+            <ion-list>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Nombre</h2>
+                        </ion-text>
+
+                        <ion-note>{{usuario.nombrereal}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Tipo ident.</h2>
+                        </ion-text>
+
+                        <ion-note>{{usuario.tipoidentificacion}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Identificación</h2>
+                        </ion-text>
+
+                        <ion-note>{{usuario.identificacion}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Teléfono</h2>
+                        </ion-text>
+
+                        <ion-note>{{usuario.telefono}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Móvil</h2>
+                        </ion-text>
+                        <ion-note>{{usuario.movil}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Email</h2>
+                        </ion-text>
+                        <ion-note>{{usuario.correo}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-label>
+                        <ion-text color="primary">
+                            <h2>Dirección</h2>
+                        </ion-text>
+                        <ion-note class="ion-text-wrap ion-padding-top">{{usuario.direccion}}</ion-note>
+                    </ion-label>
+
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

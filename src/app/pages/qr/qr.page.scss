@@ -1,0 +1,20 @@
+ion-slides {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+// ion-slide {
+//     // width: 100%!important;
+//     // height: 100%!important;
+// }
+.img-slide {
+    width: 100%!important;
+    height: 60%!important;
+    background-color: #383636;
+    /* Full height */
+    // height: 100%; 
+    /* Imagen centrada y colocada de forma elegante */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

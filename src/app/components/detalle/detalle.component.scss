@@ -1,0 +1,23 @@
+.image-slide {
+    width: 100%;
+    height: 250px;
+    background-color: #383636;
+    /* Full height */
+    // height: 100%; 
+    /* Imagen centrada y colocada de forma elegante */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.slidesbg {
+    background-color: #383636;
+}
+
+ion-card {
+    background-color: white;
+}
+
+ion-label h5 {
+    font-weight: bold;
+}

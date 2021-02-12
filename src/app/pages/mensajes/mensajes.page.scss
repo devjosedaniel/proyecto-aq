@@ -1,0 +1,35 @@
+.mensaje{
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    white-space: pre-wrap;
+}
+
+.otro-mensaje{
+    background: var(--ion-color-tertiary);
+    color: white;
+}
+.mi-mensaje{
+    background: var(--ion-color-success);
+    color: white;
+}
+
+.time{
+    color: #dfdfdf;
+    float: right;
+    font-size: small;
+}
+.mensaje-input{
+    width: 100%;
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 10px;
+    background: #fff;
+    resize: none;
+    margin-left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.msg-btn{
+    // -webkit-padding-start: 0.5em;
+    // --padding-end: 0.5em;
+}

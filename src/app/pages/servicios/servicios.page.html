@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Servicios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button >
+        <ion-icon slot="icon-only" name="heart-empty"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-card *ngFor="let servicio of servicios" class="card">
+    <img />
+    <ion-card-header>
+      <!-- <ion-card-subtitle class="ion-align-items-center ion-text-center"
+        >Servicio</ion-card-subtitle
+      > -->
+      <ion-card-title color="primary" class="ion-align-items-center ion-text-center">{{ servicio.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ servicio.descripcion}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

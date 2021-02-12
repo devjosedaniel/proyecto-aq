@@ -1,0 +1,30 @@
+<div class="trabajo">
+
+    <ion-item [class]="clase" (click)="verDetalle()" detail lines="none">
+        <ion-icon *ngIf="trabajo.pendiente>0" slot="start" color="success" style="position: absolute;top:-10%;left: 0;" name="pricetag"></ion-icon>
+        <ion-avatar *ngIf="foto" slot="start">
+            <img [src]="foto | imageSanitizer" />
+        </ion-avatar>
+        <ion-label>
+
+            <ion-text color="primary">
+                <h3 style="font-weight: bold;">{{trabajo.cliente}}</h3>
+            </ion-text>
+            <h5>{{ trabajo.servicio}}</h5>
+            <h5>{{ trabajo.encargado}}</h5>
+            <h5>{{ trabajo.fecha}} - {{ trabajo.hora_inicio}}</h5>
+            <div *ngIf="trabajo.sincronizar === 1 && trabajo.idestado === '3'">
+                <ion-button (click)="sincronizar()" mode="ios" color="primary" size="small">
+                    Sincronizar
+                </ion-button>
+            </div>
+        </ion-label>
+        <ion-badge slot="end" [color]="color" mode="ios">{{ trabajo.estado}}</ion-badge>
+
+    </ion-item>
+    <!-- <div *ngIf="trabajo.sincronizar === 1 && trabajo.idestado === '3'" class="ion-align-items-center ion-text-center {{clase}}">
+        <ion-button (click)="sincronizar()" mode="ios" color="primary" size="small">
+            Sincronizar
+        </ion-button>
+    </div> -->
+</div>

@@ -1,0 +1,26 @@
+<ion-header no-border>
+    <ion-toolbar mode="ios" color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Codigo QR</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-border>
+    <div class="ion-text-center">
+        <ion-text color="dark">
+            <h1>Código único de Cliente</h1>
+        </ion-text>
+    </div><br><br>
+    <ion-slides [options]="slideOpts">
+        <ion-slide class="img-slide" [style]="imgQr | domSanitizer">
+            <!-- <img [src]="imgQr | imageSanitizer"> -->
+            <!-- <ion-img [src]="imgQr|imageSanitizer"></ion-img> -->
+        </ion-slide>
+
+    </ion-slides>
+    <!-- <ion-text color="primary">
+        <h1>Esté codigo es unico de cliente.</h1>
+    </ion-text> -->
+</ion-content>

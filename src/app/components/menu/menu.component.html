@@ -1,0 +1,57 @@
+<!-- <ion-menu side="start" menuId="menu1" contentId="principal">
+  <ion-header>
+    <ion-toolbar *ngIf="!nombre" color="primary">
+      <ion-title>Aquagardens</ion-title>
+    </ion-toolbar>
+    <ion-item *ngIf="nombre" color="primary">
+      <ion-avatar slot="start">
+        <img src="assets/icon.png" />
+      </ion-avatar>
+      <ion-label>{{ nombre}}</ion-label>
+    </ion-item>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item [routerLink]="redirecTo">
+          <ion-icon slot="start" name="home"></ion-icon>
+          <ion-label>Inicio {{ redirecTo}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle *ngIf="nombre && idrol==='2'">
+        <ion-item>
+          <ion-icon slot="start" name="qr-scanner"></ion-icon>
+          <ion-label>Codigo Qr</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-icon slot="start" name="build"></ion-icon>
+          <ion-label>Servicios</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item routerLink="/sugerencia">
+          <ion-icon slot="start" name="text"></ion-icon>
+          <ion-label>Sugerencias</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-icon slot="start" name="call"></ion-icon>
+          <ion-label>Contacto</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item (click)="salir()">
+          <ion-icon slot="start" name="exit"></ion-icon>
+          <ion-label>Salir</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+  <ion-item detail>
+    <ion-icon slot="start" name="logo-ionic"></ion-icon>
+    <ion-label>Desarrollado por José Daniel</ion-label>
+  </ion-item>
+</ion-menu> -->

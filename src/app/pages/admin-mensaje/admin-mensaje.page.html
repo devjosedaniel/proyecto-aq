@@ -1,0 +1,25 @@
+<ion-header no-border >
+  <ion-toolbar mode="ios" color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let chat of chats" class="chat">
+    <ion-item (click)="abrirChat(chat)" detail  lines="none">
+      <ion-avatar slot="start">
+        <img src="https://aquagardens.com.ec/administrador/img/personal/{{ chat.foto}}" />
+      </ion-avatar>
+      <ion-label>
+        <ion-text color="primary">
+          <h2>{{chat.usuario}}</h2>
+        </ion-text>
+        <h5>{{chat.texto}}</h5>
+      </ion-label>
+      
+    </ion-item>
+  </div>
+</ion-content>

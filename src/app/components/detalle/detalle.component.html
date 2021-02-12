@@ -1,0 +1,227 @@
+<ion-header no-border>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="regresar()">
+                <ion-icon slot="start" name="arrow-round-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+        <ion-title>Detalle Trabajo</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+    <ion-slides class="slidesbg" *ngIf="trabajo.foto1" mode="ios" pager="ios" scrollbar="ios">
+        <ion-slide class="image-slide" [style]="ftrabajo | domSanitizer">
+            <!-- <img  [src]="ftrabajo | imageSanitizer"> -->
+        </ion-slide>
+    </ion-slides>
+    <ion-card *ngIf="trabajo.latitud && trabajo.longitud && trabajo.estado === 'INICIADO'">
+
+        <div id='map' style='width: 100%; height: 300px;background-color: #f6f6f4;'></div>
+
+    </ion-card>
+    <ion-item>
+        <ion-avatar slot="start">
+            <img [src]="foto" />
+        </ion-avatar>
+        <ion-label>
+            <ion-text color="primary">
+                <h3>{{ trabajo.servicio }}</h3>
+            </ion-text>
+            <h5>{{ trabajo.encargado }}</h5>
+        </ion-label>
+
+    </ion-item>
+
+    <ion-card style="background-color: white;">
+        <!-- <ion-card-header> -->
+        <!-- <ion-card-subtitle>Awesome Subtitle</ion-card-subtitle> -->
+        <!--  <ion-card-subtitle color="primary">{{ trabajo.cliente}}<ion-icon slot="end" name="home"></ion-icon></ion-card-subtitle> -->
+        <!-- </ion-card-header> -->
+        <ion-item>
+            <ion-label color="primary">
+                <h5 style="font-weight: bold;">{{ trabajo.cliente }}</h5>
+            </ion-label>
+            <ion-icon color="primary" slot="end" name="home"></ion-icon>
+        </ion-item>
+        <ion-card-content>
+            <div *ngIf="usuario.idrol === '3'">
+                <ion-badge *ngIf="trabajo.pendiente>0" mode="ios" color="success">Valor pendiente de ${{trabajo.pendiente}}</ion-badge>
+            </div>
+            <div>
+                <ion-label color="primary">
+                    <h5>Estado</h5>
+                </ion-label>
+                <ion-note>{{ trabajo.estado }}</ion-note>
+            </div>
+            <div *ngIf="trabajo.hora_llegada">
+                <ion-label color="primary">
+                    <h5>Hora Llegada</h5>
+                </ion-label>
+                <ion-note>{{ trabajo.hora_llegada }}</ion-note>
+            </div>
+            <div *ngIf="trabajo.hora_salida">
+                <ion-label color="primary">
+                    <h5>Hora Salida</h5>
+                </ion-label>
+                <ion-note>{{ trabajo.hora_salida }}</ion-note>
+            </div>
+            <div *ngIf="trabajo.observacion_termino">
+                <ion-label color="primary">
+                    <h5>Observación</h5>
+                </ion-label>
+                <ion-note>{{ trabajo.observacion_termino }}</ion-note>
+            </div>
+            <div *ngIf="trabajo.checklist && trabajo.checklist.length>0">
+                <!-- <ion-list>
+                    <ion-item *ngFor="let chk of trabajo.checklist">
+                        <ion-label>
+                            <h5>{{chk.checklist}}</h5>
+                        </ion-label>
+                    </ion-item>
+                </ion-list> -->
+                <ion-label color="primary">
+                    <h5>Recordatorio</h5>
+                </ion-label>
+                <div *ngFor="let chk of trabajo.checklist">
+                    <ion-note class="ion-text-wrap ion-text-capitalize">{{chk.checklist}}</ion-note>
+                </div>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <!-- calificacion -->
+    <ion-card *ngIf="usuario.idrol === '2' && trabajo.estado === 'TERMINADO' && mostrarCalificacion && trabajo.calificacion === '0'">
+        <ion-card-content>
+            <ion-label>
+                <ion-text color="primary">
+                    <h2 style="font-weight: bold;">Califique nuestro servicio.</h2>
+                </ion-text>
+                <div>
+                    <ion-button (click)="calificar(1)" fill="clear">
+                        <img src="assets/emoticon_triste.png">
+                    </ion-button>
+                    <ion-button (click)="calificar(2)" fill="clear">
+                        <img src="assets/emoticon_neutral.png">
+                    </ion-button>
+                    <ion-button (click)="calificar(3)" fill="clear">
+                        <img src="assets/emoticon_feliz.png">
+                    </ion-button>
+                    <!-- <ion-icon color="danger" slot="icon-only" name="sad"></ion-icon>
+                    <ion-icon color="warning" slot="icon-only" name="alert"></ion-icon>
+                    <ion-icon color="success" slot="icon-only" name="happy"></ion-icon> -->
+                </div>
+            </ion-label>
+        </ion-card-content>
+    </ion-card>
+    <!-- queja -->
+    <ion-card *ngIf="usuario.idrol === '2' && trabajo.estado === 'TERMINADO' && mostrarReporte">
+
+        <ion-card-content>
+            <ion-text color="primary">
+                <h2 style="font-weight: bold;">Reportar un problema</h2>
+            </ion-text>
+            <ion-item>
+                <ion-label position="floating">Detalle su problema aqui</ion-label>
+                <ion-textarea [(ngModel)]="queja"></ion-textarea>
+            </ion-item>
+            <ion-button [disabled]="queja.length===0" (click)="reportar()" expand="block" fill="outline" shape="round">
+                Reportar
+            </ion-button>
+        </ion-card-content>
+    </ion-card>
+    <!-- en camino -->
+    <ion-card *ngIf="usuario.idrol === '3' && trabajo.estado === 'PENDIENTE'">
+        <ion-card-content>
+            <div class="ion-padding-top">
+                <ion-button (click)="enCamino()" mode="ios">
+                    <ion-icon slot="start" name="bicycle"></ion-icon> Ir en camino
+                </ion-button>
+            </div>
+        </ion-card-content>
+    </ion-card>
+    <!-- Iniciar trabajo -->
+    <ion-card *ngIf="usuario.idrol === '3' && trabajo.estado === 'EN CAMINO'">
+        <ion-card-header>
+            <ion-item>
+                <ion-buttons slot="start">
+                    <ion-button color="danger" (click)="reiniciar()">
+                        <ion-icon name="sync"></ion-icon>
+                        Reiniciar
+                    </ion-button>
+                </ion-buttons>
+                <ion-buttons slot="end">
+                    <!-- <ion-button [disabled]="coords.longitud===0"  (click)="iniciarTrabajo()"
+                      color="primary">
+            Iniciar
+          </ion-button> -->
+                    <ion-button (click)="iniciarTrabajo()" color="primary">
+                        Iniciar
+                    </ion-button>
+                </ion-buttons>
+            </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Posición actual</ion-label>
+                    <ion-spinner *ngIf="cargandoGeo" name="lines-small"></ion-spinner>
+                    <ion-toggle (ionChange)="getGeo()" [(ngModel)]="posicion" slot="end"></ion-toggle>
+                </ion-item>
+            </ion-list>
+
+        </ion-card-content>
+    </ion-card>
+    <!-- terminar trabajo -->
+    <ion-card *ngIf="usuario.idrol === '3' && trabajo.estado === 'INICIADO'" style="background-color: white;">
+        <ion-card-header>
+            <ion-item>
+                <ion-buttons slot="end">
+                    <ion-button [disabled]="mensaje.length<1 && tempImages.length<1" (click)="terminarTrabajo()" color="primary">
+                        Terminar
+                    </ion-button>
+                </ion-buttons>
+            </ion-item>
+
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-label position="floating">Escriba una observación</ion-label>
+                    <ion-textarea [(ngModel)]="mensaje"></ion-textarea>
+                </ion-item>
+            </ion-list>
+            <ion-list>
+                <ion-title color="primary">
+                    <h4 style="font-weight: bold;">Checklist</h4>
+                </ion-title>
+                <ion-item *ngFor="let check of checklist; let a = index">
+                    <ion-label>{{check.nombre}}</ion-label>
+                    <ion-checkbox [(ngModel)]="checkUsados[a]" color="primary" mode="ios" slot="start"></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button [disabled]="tempImages.length>1" (click)="camara()" mode="ios" shape="round">
+                        <ion-icon slot="start" name="camera"></ion-icon>
+                        Cámara
+                    </ion-button>
+                </ion-col>
+                <!-- <ion-col size="6">
+          <ion-button [disabled]="tempImages.length>1" (click)="galeria()" mode="ios"  shape="round">
+            <ion-icon slot="start" name="images"></ion-icon>
+            Galería
+          </ion-button>
+        </ion-col> -->
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="3">
+                    <ion-card>
+                        <img [src]="tempImages | imageSanitizer" />
+                    </ion-card>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

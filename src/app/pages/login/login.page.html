@@ -1,0 +1,69 @@
+<ion-header no-border>
+    <ion-buttons slot="start">
+        <ion-back-button style="color: white;" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+</ion-header>
+<ion-content>
+
+
+    <ion-slides #slideprincipal class="mainSlide">
+
+        <ion-slide>
+
+            <ion-card mode="ios">
+                <ion-card-content>
+                    <form (ngSubmit)="login( flogin )" #flogin="ngForm">
+                        <ion-grid fixed>
+
+                            <ion-row class="ion-text-center">
+                                <ion-col style="text-align:  -webkit-center!important;">
+                                    <img src="/assets/logoapp.png">
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row class="ion-margin-top">
+                                <ion-col>
+
+                                    <ion-list>
+
+                                        <ion-item lines="none">
+                                            <ion-label>Usuario: </ion-label>
+                                            <ion-input name="email" [(ngModel)]="loginUsuario.usuario" type="email" required></ion-input>
+                                        </ion-item>
+
+                                        <ion-item lines="none">
+                                            <ion-label>Contraseña: </ion-label>
+                                            <ion-input name="password" [(ngModel)]="loginUsuario.password" type="password" required></ion-input>
+                                        </ion-item>
+
+                                    </ion-list>
+                                </ion-col>
+                            </ion-row>
+
+                            <ion-row class="ion-margin-bottom">
+                                <ion-col>
+                                    <ion-button type="submit" color="success" shape="round">
+                                        Entrar
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                            <ion-note class="ion-margin-top">Necesitas nuestros servicios?
+                                <ion-text style="font-weight: bold;" color=primary [routerLink]="[ '/contacto' ]">Ingresa aquí</ion-text>
+                            </ion-note>
+                        </ion-grid>
+                    </form>
+                </ion-card-content>
+            </ion-card>
+
+
+
+        </ion-slide>
+
+
+
+
+    </ion-slides>
+
+
+
+</ion-content>
